@@ -6,7 +6,7 @@ const App = () => {
     <div className="h-screen w-screen bg-black flex gap-3 px-5">
       <div className="h-full w-[20vw] bg-gray-800 rounded-2xl "></div>
       <div className="h-full w-[75vw] bg-gray-600 rounded-2xl ">
-        <Editor height="full" defaultLanguage="javascript" />
+        <Editor height="100%" defaultLanguage="javascript" />
       </div>
     </div>
   );
