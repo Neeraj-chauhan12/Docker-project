@@ -1,12 +1,31 @@
-import React from "react";
+
 import Editor from "@monaco-editor/react";
 
 const App = () => {
   return (
-    <div className="h-screen w-screen bg-black flex gap-3 px-5">
-      <div className="h-full w-[20vw] bg-gray-800 rounded-2xl "></div>
-      <div className="h-full w-[75vw] bg-gray-600 rounded-2xl ">
-        <Editor height="100%" defaultLanguage="javascript" />
+    <div className="h-screen w-screen bg-black flex gap-3">
+      <div className="h-full w-[20vw] bg-gray-500 "></div>
+      <div className="h-full w-[80vw] bg-gray-600 ">
+        <Editor
+          options={{
+            fontSize: 16,
+            automaticLayout: true,
+            
+            scrollbar: {
+              vertical: "hidden",
+              horizontal: "hidden",
+            },
+            padding: {
+              top: 10,
+              bottom: 10,
+            },
+
+          }}
+          height="100%"
+          width="100%"
+
+          defaultLanguage="javascript"
+        />
       </div>
     </div>
   );

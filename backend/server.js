@@ -11,3 +11,5 @@ const io=new Server(server,{
         methods:["GET","POST"]
     }
 })
+
+module.exports={io,app,server}
