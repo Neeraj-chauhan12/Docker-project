@@ -5,6 +5,12 @@ const {connection}=require('./src/dbconnection/connection')
 
 
 
+
+app.get("/",(req,res)=>{
+    res.send("server is running")
+})
+
+
 //CONNECTION DB
 connection()
 
