@@ -1,6 +1,6 @@
-import React from 'react'
-import Editor from './pages/Editor';
+import React from "react";
 
+import Editor from "./pages/Editor";
 
 const App = () => {
   return (

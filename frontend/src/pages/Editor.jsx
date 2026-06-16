@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MonacoEditor from "@monaco-editor/react";
 import { MonacoBinding } from "y-monaco";
 import { SocketIOProvider } from "y-socket.io";
@@ -13,11 +13,18 @@ const Editor = () => {
   const ydoc = useMemo(() => new Y.Doc(), []);
   const ytext = useMemo(() => ydoc.getText("monaco"), [ydoc]);
 
-  const handleMount = (editor) => {
-    editorRef.current = editor;
-    const [username,setUsername] = useState(()=>{
+  const [user,setUser]=useState([]);
+
+  const [username,setUsername] = useState(()=>{
       return new URLSearchParams(window.location.search).get("username") || "Anonymous"
     })
+
+  const handleMount = (editor) => {
+    editorRef.current = editor;
+  
+
+    
+    
 
     const provider = new SocketIOProvider(
       "http://localhost:3000",
@@ -42,26 +49,30 @@ const Editor = () => {
 
   console.log("ytext",ytext);
 
-  const handleForm =(e)=>{
-    e.preventDefault()
-    setUsername(e.target[0].value)
-    window.history.pushState(null,"",`?username=${e.target[0].value}`)
+  // const handleForm =(e)=>{
+  //   e.preventDefault()
+  //   setUsername(e.target[0].value)
+  //   window.history.pushState(null,"",`?username=${e.target[0].value}`)
   
-  }
+  // }
 
-  if(!username){
-    return(
-      <div className="h-full w-full flex justify-center items-center">
-        <form onSubmit={handleForm} className="py-5 px-5 bg-gray-500">
-         <h1>Enter your name</h1>
-        <input type="text" placeholder="Enter your name" className="py-2 px-2"  />
-        <button className="bg-blue-500 px-10 py-4">Join now</button>
-        </form>
+  // useEffect(()=>{
+  //   console.log("username",username);
+  // },[username])
+
+  // if(!username){
+  //   return(
+  //     <div className="h-full w-full flex justify-center items-center">
+  //       <form onSubmit={handleForm} className="py-5 px-5 bg-gray-500">
+  //        <h1>Enter your name</h1>
+  //       <input type="text" placeholder="Enter your name" className="py-2 px-2"  />
+  //       <button className="bg-blue-500 px-10 py-4">Join now</button>
+  //       </form>
        
        
-      </div>
-    )
-  }
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="h-full w-full">
